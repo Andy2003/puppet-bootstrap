@@ -27,4 +27,6 @@ apt-get install -y puppet >/dev/null
 
 echo "Puppet installed!"
 
-sudo puppet apply --modulepath="${BASH_SOURCE%/*}/modules" "${BASH_SOURCE%/*}/manifests/master.pp"
+cd ${BASH_SOURCE%/*}
+sudo git submodule update --init
+sudo puppet apply --modulepath=./modules ./manifests/master.pp
